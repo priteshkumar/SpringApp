@@ -1,8 +1,10 @@
 package com.mavixk.model;
 
 public class Speaker {
+
   private String firstname;
   private String lastname;
+  private double seednum;
 
   public String getFirstname() {
     return firstname;
@@ -18,5 +20,13 @@ public class Speaker {
 
   public void setLastname(String lastname) {
     this.lastname = lastname;
+  }
+
+  public double getSeednum() {
+    return seednum;
+  }
+
+  public void setSeednum(double seednum) {
+    this.seednum = seednum;
   }
 }

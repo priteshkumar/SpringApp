@@ -1,14 +1,10 @@
 package com.mavixk;
 
-import com.mavixk.com.mavixk.service.SpeakerService;
-import com.mavixk.com.mavixk.service.SpeakerServiceImpl;
-import com.mavixk.repository.HibernateSpeakerRepositoryImpl;
-import com.mavixk.repository.SpeakerRepository;
-import org.springframework.beans.factory.config.BeanDefinition;
+import com.mavixk.util.CalendarFactory;
+import java.util.Calendar;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
 
 @Configuration
 @ComponentScan({"com.mavixk"})
@@ -27,4 +23,16 @@ public class SpringAppConfig {
     return new HibernateSpeakerRepositoryImpl();
   }
   */
+
+  @Bean(name = "cal")
+  public CalendarFactory calFactory() {
+    CalendarFactory calendarFactory = new CalendarFactory();
+    calendarFactory.addDays(2);
+    return calendarFactory;
+  }
+
+  @Bean
+  public Calendar cal() throws Exception {
+    return calFactory().getObject();
+  }
 }
